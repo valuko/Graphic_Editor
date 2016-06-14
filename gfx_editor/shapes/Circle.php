@@ -31,7 +31,10 @@ class Circle implements IShape
 
     public function init(array $attributes) {
         
+        // Initialize the defined attributes here
+        $this->radius = $attributes['radius'];
+        $this->startPoint = new \gfx_editor\Points($attributes['points']);
     }
 
-//put your code here
+
 }

@@ -31,6 +31,10 @@ class Square implements IShape
 
     public function init(array $attributes) {
         // Use the 
+        
+        // Initialize the defined attributes here
+        $this->length = $attributes['length'];
+        $this->startPoint = new \gfx_editor\Points($attributes['points']);
     }
 
 }

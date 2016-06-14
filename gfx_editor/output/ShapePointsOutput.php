@@ -14,5 +14,10 @@ namespace gfx_editor\output;
  * @author Victor Aluko
  */
 class ShapePointsOutput implements IShapeOutput {
-    //put your code here
+    
+    public function output(\gfx_editor\shapes\IShape $shape) {
+        
+    }
+
+//put your code here
 }

@@ -7,16 +7,20 @@
  */
 
 namespace gfx_editor\output;
+
 /**
- * Description of ShapeDrawOutput
+ * Description of ShapeOutputFactory
  *
  * @author Victor Aluko
  */
-class ShapeDrawOutput implements IShapeOutput {
-    //put your code here
+class ShapeOutputFactory {
     
-    public function output(\gfx_editor\shapes\IShape $shape) {
+    /**
+     *  Takes the shape type name and returns an instance of type Shape
+     * @param string $type
+     * @return IShapeOutput
+     */
+    public static function getOutputInstance($type) {        
         
-        return [];
     }
 }

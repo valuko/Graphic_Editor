@@ -7,6 +7,7 @@
  */
 
 use gfx_editor\shapes as gfx_space;
+use gfx_editor\output as gfx_output;
 /**
  * How it would work:
  *  Pass in params via CLI
@@ -14,6 +15,7 @@ use gfx_editor\shapes as gfx_space;
  *  
  */
 
+// Cli params will be passed in here
 $cliParams = [];
 $shapes = new gfx_space\ShapesCollection();
 
@@ -28,9 +30,17 @@ foreach ($cliParams as $key => $params) {
         $shapes->addItem($shape, $key);        
         
     } catch (Exception $ex) {
-        
+        // Handle exceptions here
     }
 }
 
 // Now Render the shapes as desired
+// Output will be passed in as a param for the script
+$outputType = '';
+
+$shapeOutput = gfx_output\ShapeOutputFactory::getOutputInstance($outputType);
+// Now use that instance to render the collections of Shapes
+foreach ($shapes as $key => $shape) {
+    $shapeOutput->output($shape);
+}
 
