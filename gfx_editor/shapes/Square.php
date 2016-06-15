@@ -14,7 +14,7 @@ namespace gfx_editor\shapes;
  *
  * @author Victor Aluko
  */
-class Square implements IShape 
+class Square extends Shape
 {
     
     protected $length;

@@ -6,7 +6,6 @@
  * and open the template in the editor.
  */
 
-namespace gfx_editor;
 namespace gfx_editor\shapes;
 
 /**
@@ -14,7 +13,7 @@ namespace gfx_editor\shapes;
  *
  * @author Victor Aluko
  */
-class Circle implements IShape 
+class Circle extends Shape
 {
     protected $radius;
     
@@ -22,17 +21,18 @@ class Circle implements IShape
      *
      * @var gfx_editor\Points 
      */
-    protected $startPoint = [];
+    protected $startPoint;
 
 
     public function calcArea() {
-        
+        // Calculate area
     }
 
     public function init(array $attributes) {
         
         // Initialize the defined attributes here
         $this->radius = $attributes['radius'];
+        // Instantiate the origin point
         $this->startPoint = new \gfx_editor\Points($attributes['points']);
     }
 

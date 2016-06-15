@@ -7,6 +7,7 @@
  */
 
 namespace gfx_editor\output;
+use gfx_editor\shapes as gfx_shapes;
 
 /**
  * Description of ShapeOutputInterface
@@ -16,5 +17,7 @@ namespace gfx_editor\output;
 interface IShapeOutput {
     //put your code here
     
-    public function output(\gfx_editor\shapes\IShape $shape);
+    public function output(gfx_shapes\Shape $shape);
+    
+    public function setOutputParams($params);
 }

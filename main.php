@@ -1,46 +1,37 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 use gfx_editor\shapes as gfx_space;
-use gfx_editor\output as gfx_output;
-/**
- * How it would work:
- *  Pass in params via CLI
- *  Params get passed into Factory class
- *  
- */
 
-// Cli params will be passed in here
-$cliParams = [];
+// Returns the request params to be served either via TTP POST or CLI command args
+function getCliParams()
+{
+    return [];
+}
+
+// Get the request params here
+$requestParams = getCliParams();
+
+// Instantiate the variables needed
 $shapes = new gfx_space\ShapesCollection();
+$helper = new \gfx_editor\ShapesHelper();
 
-foreach ($cliParams as $key => $params) {
+// Loop over the params and instantiate the objects
+foreach ($requestParams as $key => $params) {
     
-    try {
-        // Initialize the factory
-        $shape = gfx_space\ShapesFactory::getShapeObject($params['type']);
-        // Use the other params to build the shape object
-        $shape->init($params['attributes']);
-        // Now add to the collection
-        $shapes->addItem($shape, $key);        
-        
-    } catch (Exception $ex) {
-        // Handle exceptions here
+    $shape = $helper->buildShape($params);
+    if (empty($shape)) {
+        // Handle empty shape case here
+        echo "Shape params couldnt be initiated";
+        continue;
     }
+    
+    $shapes->addItem($shape, $key);    
 }
 
-// Now Render the shapes as desired
-// Output will be passed in as a param for the script
-$outputType = '';
-
-$shapeOutput = gfx_output\ShapeOutputFactory::getOutputInstance($outputType);
-// Now use that instance to render the collections of Shapes
+// Now output the Shapes after further processing
 foreach ($shapes as $key => $shape) {
-    $shapeOutput->output($shape);
+    $shape->output();
 }
+
+
 
