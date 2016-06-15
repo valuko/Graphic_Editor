@@ -17,8 +17,8 @@ $ php main.php --raw=params
 The format for ```params``` is as follows:
 ```json
 [
-    {type: circle, params : { {attributes: {radius: 7, points: [2.3, 4.5]}, output: { type: draw, params: {filepath: '/var/log/output.bin'}}}}},
-    {type: square, params : { {attributes: {length: 8, points: [0, 0]}, output: { type: points, params: { }}}}}
+    {type: "circle", params : { {attributes: {radius: 7, points: [2.3, 4.5]}, output: { type: "draw", params: {filepath: "/var/log/output.bin"}}}}},
+    {type: "square", params : { {attributes: {length: 8, points: [0, 0]}, output: { type: "points", params: { }}}}}
 ]
 ```
 
